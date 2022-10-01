@@ -17,27 +17,25 @@ from .test_util import run_in_subprocess
 
 MMDET = 'mmdet'
 
-try:
-    from mmcv.runner.hooks import HOOKS
-    import mmdet
-    HOOKS._module_dict.pop('YOLOXLrUpdaterHook', None)
-    from mmdet.models.builder import MODELS as MMMODELS
-    from mmdet.models.builder import BACKBONES as MMBACKBONES
-    from mmdet.models.builder import NECKS as MMNECKS
-    from mmdet.models.builder import HEADS as MMHEADS
-    from mmdet.core import BitmapMasks, PolygonMasks, encode_mask_results
-    from mmdet.core.mask import mask2bbox
-    MM_REGISTRY = {
-        MMDET: {
-            'model': MMMODELS,
-            'backbone': MMBACKBONES,
-            'neck': MMNECKS,
-            'head': MMHEADS
-        }
+from mmcv.runner.hooks import HOOKS
+import mmdet
+HOOKS._module_dict.pop('YOLOXLrUpdaterHook', None)
+from mmdet.models.builder import MODELS as MMMODELS
+from mmdet.models.builder import BACKBONES as MMBACKBONES
+from mmdet.models.builder import NECKS as MMNECKS
+from mmdet.models.builder import HEADS as MMHEADS
+from mmdet.core import BitmapMasks, PolygonMasks, encode_mask_results
+from mmdet.core.mask import mask2bbox
+MM_REGISTRY = {
+    MMDET: {
+        'model': MMMODELS,
+        'backbone': MMBACKBONES,
+        'neck': MMNECKS,
+        'head': MMHEADS
     }
+}
     MM_ORIGINAL_REGISTRY = copy.deepcopy(MM_REGISTRY)
-except ImportError:
-    pass
+
 
 EASYCV_REGISTRY_MAP = {
     'model': MODELS,
