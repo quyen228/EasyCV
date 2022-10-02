@@ -34,7 +34,7 @@ MM_REGISTRY = {
         'head': MMHEADS
     }
 }
-    MM_ORIGINAL_REGISTRY = copy.deepcopy(MM_REGISTRY)
+MM_ORIGINAL_REGISTRY = copy.deepcopy(MM_REGISTRY)
 
 
 EASYCV_REGISTRY_MAP = {
